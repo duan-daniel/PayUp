@@ -7,21 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		51BF3ECCAECAE15BEE7D23C5 /* Pods_PayUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C7021CE0EA63FD556831C52 /* Pods_PayUp.framework */; };
+		A492244221058FF900CAB156 /* ProfilesDetailedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A492244121058FF900CAB156 /* ProfilesDetailedTableViewCell.swift */; };
 		A494EBB220FE9A580047B5EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A494EBB120FE9A580047B5EC /* AppDelegate.swift */; };
-		A494EBB420FE9A580047B5EC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A494EBB320FE9A580047B5EC /* ViewController.swift */; };
 		A494EBB720FE9A580047B5EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A494EBB520FE9A580047B5EC /* Main.storyboard */; };
-		A494EBB920FE9A5C0047B5EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A494EBB820FE9A5C0047B5EC /* Assets.xcassets */; };
 		A494EBBC20FE9A5C0047B5EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A494EBBA20FE9A5C0047B5EC /* LaunchScreen.storyboard */; };
+		A4996A7121041A82001A59D5 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4996A7021041A82001A59D5 /* Profile.swift */; };
+		A4996A7321041E91001A59D5 /* AddProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4996A7221041E91001A59D5 /* AddProfileViewController.swift */; };
+		A49C5C53210639730027B08A /* DisplayOweViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C5C52210639730027B08A /* DisplayOweViewController.swift */; };
+		A49C5C5521064C170027B08A /* OweNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C5C5421064C170027B08A /* OweNote.swift */; };
+		A49E6291213C601100649986 /* EmptyBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E6290213C601100649986 /* EmptyBackgroundView.swift */; };
+		A4A9837420FFE1E3008B11AD /* ProfilesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A9837320FFE1E3008B11AD /* ProfilesTableViewController.swift */; };
+		A4A9837720FFE830008B11AD /* ProfilesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A9837620FFE830008B11AD /* ProfilesTableViewCell.swift */; };
+		A4AEA087210136B700C9A0F4 /* ProfilesDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AEA086210136B700C9A0F4 /* ProfilesDetailedViewController.swift */; };
+		A4B9BFF2211E464700B83A78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4B9BFF1211E464700B83A78 /* Assets.xcassets */; };
+		A4B9C84D212FB01600E98A16 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B9C84C212FB01600E98A16 /* SummaryViewController.swift */; };
+		A4B9C851212FB38400E98A16 /* Summary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B9C850212FB38400E98A16 /* Summary.swift */; };
+		A4BC5706211B92800010441A /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BC5705211B92800010441A /* HeaderCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C7021CE0EA63FD556831C52 /* Pods_PayUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PayUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4300F89310B057A1BBF7994D /* Pods-PayUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayUp.release.xcconfig"; path = "Pods/Target Support Files/Pods-PayUp/Pods-PayUp.release.xcconfig"; sourceTree = "<group>"; };
+		541FAC93329088BDC3961F5C /* Pods-PayUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayUp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PayUp/Pods-PayUp.debug.xcconfig"; sourceTree = "<group>"; };
+		A492244121058FF900CAB156 /* ProfilesDetailedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilesDetailedTableViewCell.swift; sourceTree = "<group>"; };
 		A494EBAE20FE9A580047B5EC /* PayUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PayUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A494EBB120FE9A580047B5EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A494EBB320FE9A580047B5EC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A494EBB620FE9A580047B5EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A494EBB820FE9A5C0047B5EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A494EBBB20FE9A5C0047B5EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A494EBBD20FE9A5C0047B5EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A4996A7021041A82001A59D5 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		A4996A7221041E91001A59D5 /* AddProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProfileViewController.swift; sourceTree = "<group>"; };
+		A49C5C52210639730027B08A /* DisplayOweViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayOweViewController.swift; sourceTree = "<group>"; };
+		A49C5C5421064C170027B08A /* OweNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OweNote.swift; sourceTree = "<group>"; };
+		A49E628F213C5C5000649986 /* PayUp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PayUp-Bridging-Header.h"; sourceTree = "<group>"; };
+		A49E6290213C601100649986 /* EmptyBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyBackgroundView.swift; sourceTree = "<group>"; };
+		A4A9837320FFE1E3008B11AD /* ProfilesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilesTableViewController.swift; sourceTree = "<group>"; };
+		A4A9837620FFE830008B11AD /* ProfilesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilesTableViewCell.swift; sourceTree = "<group>"; };
+		A4AEA086210136B700C9A0F4 /* ProfilesDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilesDetailedViewController.swift; sourceTree = "<group>"; };
+		A4B9BFF1211E464700B83A78 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A4B9C84C212FB01600E98A16 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SummaryViewController.swift; path = "/Users/danielduan/Documents/OTHER_STUFF/Coding/Personal_Projects/Pay_Up/PayUp/PayUp/View Controllers/SummaryViewController.swift"; sourceTree = "<absolute>"; };
+		A4B9C850212FB38400E98A16 /* Summary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Summary.swift; sourceTree = "<group>"; };
+		A4BC5705211B92800010441A /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +56,49 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51BF3ECCAECAE15BEE7D23C5 /* Pods_PayUp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A48C610020FE9C05008D40E3 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A494EBB520FE9A580047B5EC /* Main.storyboard */,
+				A494EBBA20FE9A5C0047B5EC /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		A48C610120FE9D07008D40E3 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A4B9C84C212FB01600E98A16 /* SummaryViewController.swift */,
+				A4996A7221041E91001A59D5 /* AddProfileViewController.swift */,
+				A4A9837320FFE1E3008B11AD /* ProfilesTableViewController.swift */,
+				A4AEA086210136B700C9A0F4 /* ProfilesDetailedViewController.swift */,
+				A49C5C52210639730027B08A /* DisplayOweViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		A48C610220FE9D55008D40E3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A494EBBD20FE9A5C0047B5EC /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		A494EBA520FE9A580047B5EC = {
 			isa = PBXGroup;
 			children = (
 				A494EBB020FE9A580047B5EC /* PayUp */,
 				A494EBAF20FE9A580047B5EC /* Products */,
+				C924DDD7F3BD2A4B6012F6F2 /* Pods */,
+				A59F3905A214A56EEC3A3D68 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +113,54 @@
 		A494EBB020FE9A580047B5EC /* PayUp */ = {
 			isa = PBXGroup;
 			children = (
+				A4B9BFF1211E464700B83A78 /* Assets.xcassets */,
 				A494EBB120FE9A580047B5EC /* AppDelegate.swift */,
-				A494EBB320FE9A580047B5EC /* ViewController.swift */,
-				A494EBB520FE9A580047B5EC /* Main.storyboard */,
-				A494EBB820FE9A5C0047B5EC /* Assets.xcassets */,
-				A494EBBA20FE9A5C0047B5EC /* LaunchScreen.storyboard */,
-				A494EBBD20FE9A5C0047B5EC /* Info.plist */,
+				A48C610220FE9D55008D40E3 /* Supporting Files */,
+				A48C610020FE9C05008D40E3 /* Storyboards */,
+				A48C610120FE9D07008D40E3 /* View Controllers */,
+				A4A9837520FFE80A008B11AD /* Views */,
+				A4AEA08521012F9100C9A0F4 /* Models */,
+				A49E628F213C5C5000649986 /* PayUp-Bridging-Header.h */,
 			);
 			path = PayUp;
+			sourceTree = "<group>";
+		};
+		A4A9837520FFE80A008B11AD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A4BC5705211B92800010441A /* HeaderCell.swift */,
+				A4A9837620FFE830008B11AD /* ProfilesTableViewCell.swift */,
+				A492244121058FF900CAB156 /* ProfilesDetailedTableViewCell.swift */,
+				A49E6290213C601100649986 /* EmptyBackgroundView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A4AEA08521012F9100C9A0F4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A4996A7021041A82001A59D5 /* Profile.swift */,
+				A49C5C5421064C170027B08A /* OweNote.swift */,
+				A4B9C850212FB38400E98A16 /* Summary.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A59F3905A214A56EEC3A3D68 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0C7021CE0EA63FD556831C52 /* Pods_PayUp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C924DDD7F3BD2A4B6012F6F2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				541FAC93329088BDC3961F5C /* Pods-PayUp.debug.xcconfig */,
+				4300F89310B057A1BBF7994D /* Pods-PayUp.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +170,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A494EBC020FE9A5C0047B5EC /* Build configuration list for PBXNativeTarget "PayUp" */;
 			buildPhases = (
+				C3D5AF54F533074ECB7B17BE /* [CP] Check Pods Manifest.lock */,
 				A494EBAA20FE9A580047B5EC /* Sources */,
 				A494EBAB20FE9A580047B5EC /* Frameworks */,
 				A494EBAC20FE9A580047B5EC /* Resources */,
+				A226202FEEB83A3FC7405ED2 /* [CP] Embed Pods Frameworks */,
+				4236DD4A93892A570457822D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -123,20 +225,100 @@
 			buildActionMask = 2147483647;
 			files = (
 				A494EBBC20FE9A5C0047B5EC /* LaunchScreen.storyboard in Resources */,
-				A494EBB920FE9A5C0047B5EC /* Assets.xcassets in Resources */,
+				A4B9BFF2211E464700B83A78 /* Assets.xcassets in Resources */,
 				A494EBB720FE9A580047B5EC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4236DD4A93892A570457822D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PayUp/Pods-PayUp-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PayUp/Pods-PayUp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A226202FEEB83A3FC7405ED2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PayUp/Pods-PayUp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PayUp/Pods-PayUp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C3D5AF54F533074ECB7B17BE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PayUp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A494EBAA20FE9A580047B5EC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A494EBB420FE9A580047B5EC /* ViewController.swift in Sources */,
 				A494EBB220FE9A580047B5EC /* AppDelegate.swift in Sources */,
+				A49C5C5521064C170027B08A /* OweNote.swift in Sources */,
+				A49C5C53210639730027B08A /* DisplayOweViewController.swift in Sources */,
+				A4996A7121041A82001A59D5 /* Profile.swift in Sources */,
+				A4B9C84D212FB01600E98A16 /* SummaryViewController.swift in Sources */,
+				A4A9837420FFE1E3008B11AD /* ProfilesTableViewController.swift in Sources */,
+				A492244221058FF900CAB156 /* ProfilesDetailedTableViewCell.swift in Sources */,
+				A4BC5706211B92800010441A /* HeaderCell.swift in Sources */,
+				A49E6291213C601100649986 /* EmptyBackgroundView.swift in Sources */,
+				A4AEA087210136B700C9A0F4 /* ProfilesDetailedViewController.swift in Sources */,
+				A4996A7321041E91001A59D5 /* AddProfileViewController.swift in Sources */,
+				A4B9C851212FB38400E98A16 /* Summary.swift in Sources */,
+				A4A9837720FFE830008B11AD /* ProfilesTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,17 +460,21 @@
 		};
 		A494EBC120FE9A5C0047B5EC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 541FAC93329088BDC3961F5C /* Pods-PayUp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XD5TYLYC64;
-				INFOPLIST_FILE = PayUp/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/PayUp/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.duaniel.PayUp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "./PayUp/PayUp-Bridging-Header.h";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -296,17 +482,21 @@
 		};
 		A494EBC220FE9A5C0047B5EC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4300F89310B057A1BBF7994D /* Pods-PayUp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XD5TYLYC64;
-				INFOPLIST_FILE = PayUp/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/PayUp/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.duaniel.PayUp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "./PayUp/PayUp-Bridging-Header.h";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
