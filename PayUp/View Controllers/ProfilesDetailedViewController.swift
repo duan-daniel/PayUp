@@ -11,7 +11,7 @@ import RealmSwift
 
 class ProfilesDetailedViewController: UITableViewController {
     
-    var realm: Realm!
+    // var realm: Realm!
     var profile: Profile?
     // var sectionZeroIsEmpty = false
     // var sectionOneIsEmpty = false
@@ -19,7 +19,7 @@ class ProfilesDetailedViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        realm = try! Realm()
+        // realm = try! Realm()
         self.navigationItem.title = profile?.name
         tableView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         tableView.reloadData()
@@ -203,7 +203,7 @@ class ProfilesDetailedViewController: UITableViewController {
         else if identifier == "addOwe" {
             let destination = segue.destination as! DisplayOweViewController
             destination.profile = self.profile
-            destination.realm = self.realm
+            // destination.realm = self.realm
             print("create owe bar button item tapped")
         }
         else {

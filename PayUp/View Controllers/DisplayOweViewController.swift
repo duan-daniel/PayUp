@@ -14,7 +14,7 @@ class DisplayOweViewController: UIViewController, UITextFieldDelegate {
     
     var owe: OweNote?
     var profile: Profile?
-    var realm: Realm!
+    // var realm: Realm!
     var youLent = true
     
     @IBOutlet weak var saveBarButton: UIBarButtonItem!
@@ -32,7 +32,7 @@ class DisplayOweViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("WTFF")
-        realm = try! Realm()
+        // realm = try! Realm()
         createDatePicker()
         setUpViews()
         purposeTextField.delegate = self
@@ -219,7 +219,7 @@ class DisplayOweViewController: UIViewController, UITextFieldDelegate {
             profile?.owesYou += Double(owe.amount)!
 
             print("3")
-            /*
+            /* i don't know why this shit's here lmao just don't delete it i guess
             try! self.realm.write {
                 self.realm.add(owe)
                 print("got here")
@@ -227,12 +227,13 @@ class DisplayOweViewController: UIViewController, UITextFieldDelegate {
             }
             */
             print("4")
-
+            
+            /* commenting to see where the error is
             try! destination.realm.write {
                 destination.realm.add(owe)
                 destination.profile?.stillOwesYouArray.append(owe)
             }
-            
+            */
             // add the owe to the array
             destination.profile?.stillOwesYouArray.append(owe)
         }

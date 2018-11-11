@@ -4,7 +4,7 @@
 //
 //  Created by Daniel Duan on 7/18/18.
 //  Copyright © 2018 Daniel Duan. All rights reserved.
-//
+//  testing!
 
 import UIKit
 import RealmSwift
@@ -24,6 +24,7 @@ class ProfilesTableViewController: UITableViewController {
     }
     */
     
+    // post realm
     var profiles: Results<Profile> {
         get {
             return realm.objects(Profile.self)
