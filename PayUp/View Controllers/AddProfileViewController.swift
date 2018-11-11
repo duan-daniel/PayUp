@@ -12,7 +12,7 @@ import RealmSwift
 
 class AddProfileViewController: UIViewController, UITextFieldDelegate {
     
-    // var realm: Realm!
+    var realm: Realm!
         
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var saveBarButton: UIBarButtonItem!
@@ -20,7 +20,7 @@ class AddProfileViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // realm = try! Realm()
+        realm = try! Realm()
         nameTextField.delegate = self
         saveBarButton.isEnabled = false
         [nameTextField].forEach({ $0.addTarget(self, action: #selector(editingChanged), for: .editingChanged) })
@@ -71,16 +71,15 @@ class AddProfileViewController: UIViewController, UITextFieldDelegate {
             let destination = segue.destination as! ProfilesTableViewController
             
             // pre realm:
-            destination.profiles.append(profile)
+            // destination.profiles.append(profile)
             
-            /* realm:
+            // realm:
             try! self.realm.write {
                 self.realm.add(profile)
             }
-            */
             
             destination.profile = profile
-            // destination.realm = realm
+            destination.realm = realm
             
         case "cancelNewProifle":
             print("cancel bar button item tapped")

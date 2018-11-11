@@ -11,25 +11,25 @@ import RealmSwift
 
 class ProfilesTableViewController: UITableViewController {
     
-    // var realm: Realm!
+    var realm: Realm!
     private let image = UIImage(named: "add_profile")!.withRenderingMode(.alwaysTemplate)
     private let topMessage = "Favorites"
     private let bottomMessage = "You don't have any favorites yet. All your favorites will show up here."
     
-    // Pre Realm
+    /* Pre Realm
     var profiles = [Profile]() {
         didSet {
             tableView.reloadData()
         }
     }
+    */
     
-    /* post realm
+    // post realm
     var profiles: Results<Profile> {
         get {
             return realm.objects(Profile.self)
         }
     }
-    */
     
     var summ: Summary?
     
@@ -38,7 +38,7 @@ class ProfilesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // realm = try! Realm()
+        realm = try! Realm()
         
         tableView.layoutMargins = UIEdgeInsets.zero
         tableView.separatorInset = UIEdgeInsets.zero

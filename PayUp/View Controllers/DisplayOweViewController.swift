@@ -216,6 +216,15 @@ class DisplayOweViewController: UIViewController, UITextFieldDelegate {
             owe.purpose = purposeTextField.text ?? ""
             print("2")
             
+            /* post realm
+            let realm = try! Realm()
+            let thePerson = realm.objects(Profile.self)
+            try! realm.write {
+                thePerson.owesYou += Double(owe.amount)!
+            }
+            */
+            
+            // pre realm
             profile?.owesYou += Double(owe.amount)!
 
             print("3")
