@@ -16,15 +16,7 @@ class ProfilesTableViewController: UITableViewController {
     private let topMessage = "Favorites"
     private let bottomMessage = "You don't have any favorites yet. All your favorites will show up here."
     
-    /* Pre Realm
-    var profiles = [Profile]() {
-        didSet {
-            tableView.reloadData()
-        }
-    }
-    */
-    
-    // post realm
+    // realm - 11/22/2018
     var profiles: Results<Profile> {
         get {
             return realm.objects(Profile.self)
@@ -72,6 +64,7 @@ class ProfilesTableViewController: UITableViewController {
         
         cell.profileNameLabel.text = profile.name
         
+        print(profile.name + "\(profile.stillOwesYouArray.count)")
         let pendingDebts = profile.stillOwesYouArray.count + profile.youStillOweArray.count
 
         if pendingDebts == 1 {
@@ -81,7 +74,7 @@ class ProfilesTableViewController: UITableViewController {
             cell.owesYouLabel.text = "\(pendingDebts) pending debts"
         }
         
-        let clearedDebts = profile.clearedOwes.count
+        let clearedDebts = profile.clearedOweArray.count
         
         if clearedDebts == 1 {
             cell.youOweLabel.text = "\(clearedDebts) cleared debt"

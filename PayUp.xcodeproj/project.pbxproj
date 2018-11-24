@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		51BF3ECCAECAE15BEE7D23C5 /* Pods_PayUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C7021CE0EA63FD556831C52 /* Pods_PayUp.framework */; };
+		A468015721A8D08D00CE2E97 /* AnOweToYou.swift in Sources */ = {isa = PBXBuildFile; fileRef = A468015621A8D08D00CE2E97 /* AnOweToYou.swift */; };
+		A468015D21A8D1A900CE2E97 /* YourOweToSomeone.swift in Sources */ = {isa = PBXBuildFile; fileRef = A468015C21A8D1A900CE2E97 /* YourOweToSomeone.swift */; };
+		A468015F21A8D1C500CE2E97 /* ClearedOwe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A468015E21A8D1C500CE2E97 /* ClearedOwe.swift */; };
 		A492244221058FF900CAB156 /* ProfilesDetailedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A492244121058FF900CAB156 /* ProfilesDetailedTableViewCell.swift */; };
 		A494EBB220FE9A580047B5EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A494EBB120FE9A580047B5EC /* AppDelegate.swift */; };
 		A494EBB720FE9A580047B5EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A494EBB520FE9A580047B5EC /* Main.storyboard */; };
@@ -24,12 +27,16 @@
 		A4B9C84D212FB01600E98A16 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B9C84C212FB01600E98A16 /* SummaryViewController.swift */; };
 		A4B9C851212FB38400E98A16 /* Summary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B9C850212FB38400E98A16 /* Summary.swift */; };
 		A4BC5706211B92800010441A /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BC5705211B92800010441A /* HeaderCell.swift */; };
+		A4C08EFE21A789FF00B990C1 /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C08EFD21A789FF00B990C1 /* RealmHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0C7021CE0EA63FD556831C52 /* Pods_PayUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PayUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4300F89310B057A1BBF7994D /* Pods-PayUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayUp.release.xcconfig"; path = "Pods/Target Support Files/Pods-PayUp/Pods-PayUp.release.xcconfig"; sourceTree = "<group>"; };
 		541FAC93329088BDC3961F5C /* Pods-PayUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayUp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PayUp/Pods-PayUp.debug.xcconfig"; sourceTree = "<group>"; };
+		A468015621A8D08D00CE2E97 /* AnOweToYou.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnOweToYou.swift; sourceTree = "<group>"; };
+		A468015C21A8D1A900CE2E97 /* YourOweToSomeone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourOweToSomeone.swift; sourceTree = "<group>"; };
+		A468015E21A8D1C500CE2E97 /* ClearedOwe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearedOwe.swift; sourceTree = "<group>"; };
 		A492244121058FF900CAB156 /* ProfilesDetailedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilesDetailedTableViewCell.swift; sourceTree = "<group>"; };
 		A494EBAE20FE9A580047B5EC /* PayUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PayUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A494EBB120FE9A580047B5EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +56,7 @@
 		A4B9C84C212FB01600E98A16 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SummaryViewController.swift; path = "/Users/danielduan/Documents/OTHER_STUFF/Coding/Personal_Projects/Pay_Up/PayUp/PayUp/View Controllers/SummaryViewController.swift"; sourceTree = "<absolute>"; };
 		A4B9C850212FB38400E98A16 /* Summary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Summary.swift; sourceTree = "<group>"; };
 		A4BC5705211B92800010441A /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
+		A4C08EFD21A789FF00B990C1 /* RealmHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +121,7 @@
 		A494EBB020FE9A580047B5EC /* PayUp */ = {
 			isa = PBXGroup;
 			children = (
+				A4C08EFC21A789E400B990C1 /* Helpers */,
 				A4B9BFF1211E464700B83A78 /* Assets.xcassets */,
 				A494EBB120FE9A580047B5EC /* AppDelegate.swift */,
 				A48C610220FE9D55008D40E3 /* Supporting Files */,
@@ -142,8 +151,19 @@
 				A4996A7021041A82001A59D5 /* Profile.swift */,
 				A49C5C5421064C170027B08A /* OweNote.swift */,
 				A4B9C850212FB38400E98A16 /* Summary.swift */,
+				A468015621A8D08D00CE2E97 /* AnOweToYou.swift */,
+				A468015C21A8D1A900CE2E97 /* YourOweToSomeone.swift */,
+				A468015E21A8D1C500CE2E97 /* ClearedOwe.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		A4C08EFC21A789E400B990C1 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A4C08EFD21A789FF00B990C1 /* RealmHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		A59F3905A214A56EEC3A3D68 /* Frameworks */ = {
@@ -310,13 +330,17 @@
 				A49C5C5521064C170027B08A /* OweNote.swift in Sources */,
 				A49C5C53210639730027B08A /* DisplayOweViewController.swift in Sources */,
 				A4996A7121041A82001A59D5 /* Profile.swift in Sources */,
+				A468015D21A8D1A900CE2E97 /* YourOweToSomeone.swift in Sources */,
 				A4B9C84D212FB01600E98A16 /* SummaryViewController.swift in Sources */,
 				A4A9837420FFE1E3008B11AD /* ProfilesTableViewController.swift in Sources */,
 				A492244221058FF900CAB156 /* ProfilesDetailedTableViewCell.swift in Sources */,
 				A4BC5706211B92800010441A /* HeaderCell.swift in Sources */,
+				A468015721A8D08D00CE2E97 /* AnOweToYou.swift in Sources */,
 				A49E6291213C601100649986 /* EmptyBackgroundView.swift in Sources */,
 				A4AEA087210136B700C9A0F4 /* ProfilesDetailedViewController.swift in Sources */,
+				A468015F21A8D1C500CE2E97 /* ClearedOwe.swift in Sources */,
 				A4996A7321041E91001A59D5 /* AddProfileViewController.swift in Sources */,
+				A4C08EFE21A789FF00B990C1 /* RealmHelper.swift in Sources */,
 				A4B9C851212FB38400E98A16 /* Summary.swift in Sources */,
 				A4A9837720FFE830008B11AD /* ProfilesTableViewCell.swift in Sources */,
 			);

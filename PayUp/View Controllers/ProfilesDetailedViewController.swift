@@ -13,13 +13,30 @@ class ProfilesDetailedViewController: UITableViewController {
     
     // var realm: Realm!
     var profile: Profile?
-    // var sectionZeroIsEmpty = false
-    // var sectionOneIsEmpty = false
-    // var sectionTwoIsEmpty = false
+    /*
+    var stillOwesYouArray: Results<AnOweToYou>! {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    var youStillOweArray: Results<YourOweToSomeone>! {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    var clearedOwesArray: Results<ClearedOwe>! {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    */
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // realm = try! Realm()
+        profile!.stillOwesYouArray = Array(RealmHelper.retrieveAnOweToYou())
+        profile!.youStillOweArray = Array(RealmHelper.retrieveYourOweToSomeone())
+        profile!.clearedOweArray = Array(RealmHelper.retrieveClearedOwes())
+        
         self.navigationItem.title = profile?.name
         tableView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         tableView.reloadData()
@@ -72,35 +89,14 @@ class ProfilesDetailedViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if section == 0 {
-            /*
-            if (profile?.stillOwesYouArray.count == 0) {
-                sectionZeroIsEmpty = true
-                return 1
-            }
-            sectionZeroIsEmpty = false
-            */
             return profile!.stillOwesYouArray.count
         }
         else if section == 1 {
-            /*
-            if (profile!.youStillOweArray.count == 0) {
-                sectionOneIsEmpty = true
-                return 1
-            }
-            sectionOneIsEmpty = false
-            */
             return profile!.youStillOweArray.count
         }
         else {
-            return profile!.clearedOwes.count
+            return profile!.clearedOweArray.count
         }
-        /*
-        if (profile!.clearedOwes.count == 0) {
-            sectionTwoIsEmpty = true
-            return 1
-        }
-        sectionTwoIsEmpty = false
-        */
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -124,7 +120,7 @@ class ProfilesDetailedViewController: UITableViewController {
             cell.purposeLabel.text = owe.purpose
         }
         else {
-            let owe = profile!.clearedOwes[indexPath.row]
+            let owe = profile!.clearedOweArray[indexPath.row]
             cell.dateLabel.text = owe.date
             let junk = Double(owe.amount)
             let oweAmt = String(format: "%.2f", junk!)
@@ -140,9 +136,8 @@ class ProfilesDetailedViewController: UITableViewController {
         return true
     }
     
-    
+    /* remove thing
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
         var removeButton = UITableViewRowAction()
         
         if (indexPath.section == 0 || indexPath.section == 1) {
@@ -180,6 +175,7 @@ class ProfilesDetailedViewController: UITableViewController {
         }
         return[removeButton]
     }
+    */
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else { return }
@@ -190,12 +186,12 @@ class ProfilesDetailedViewController: UITableViewController {
             let destination = segue.destination as! DisplayOweViewController
             if indexPath.section == 0 {
                 let owe = profile?.stillOwesYouArray[indexPath.row]
-                destination.owe = owe
+                destination.anOweToYou = owe
                 destination.profile = self.profile
             }
             else if indexPath.section == 1 {
                 let owe = profile?.youStillOweArray[indexPath.row]
-                destination.owe = owe
+                destination.yourOweToSomeone = owe
                 destination.profile = self.profile
             }
             
@@ -203,7 +199,6 @@ class ProfilesDetailedViewController: UITableViewController {
         else if identifier == "addOwe" {
             let destination = segue.destination as! DisplayOweViewController
             destination.profile = self.profile
-            // destination.realm = self.realm
             print("create owe bar button item tapped")
         }
         else {

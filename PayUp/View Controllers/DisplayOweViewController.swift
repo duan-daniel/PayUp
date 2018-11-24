@@ -12,9 +12,11 @@ import RealmSwift
 
 class DisplayOweViewController: UIViewController, UITextFieldDelegate {
     
-    var owe: OweNote?
+    var anOweToYou: AnOweToYou?
+    var yourOweToSomeone: YourOweToSomeone?
+    
     var profile: Profile?
-    // var realm: Realm!
+    var realm: Realm!
     var youLent = true
     
     @IBOutlet weak var saveBarButton: UIBarButtonItem!
@@ -32,15 +34,15 @@ class DisplayOweViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("WTFF")
-        // realm = try! Realm()
+        realm = try! Realm()
         createDatePicker()
         setUpViews()
         purposeTextField.delegate = self
-
         saveBarButton.isEnabled = false
         [dateTextField, amountOwedTextField, purposeTextField].forEach({ $0.addTarget(self, action: #selector(editingChanged), for: .editingChanged) })
     }
     
+    // UI Stuff
     @objc func editingChanged(_ textField: UITextField) {
         if textField.text?.characters.count == 1 {
             if textField.text?.characters.first == " " {
@@ -58,8 +60,6 @@ class DisplayOweViewController: UIViewController, UITextFieldDelegate {
         }
         saveBarButton.isEnabled = true
     }
-    
-    
     func setUpViews() {
         topView.layer.shadowOffset = CGSize(width: 0, height: 0)
         topView.layer.shadowOpacity = 0.2
@@ -73,16 +73,13 @@ class DisplayOweViewController: UIViewController, UITextFieldDelegate {
         bottomView.layer.borderWidth = 1
         bottomView.layer.borderColor = #colorLiteral(red: 0.4549019608, green: 0.7490196078, blue: 0.8392156863, alpha: 1)
     }
-    
     @objc func dismissKeyboard() {
         purposeTextField.resignFirstResponder()
     }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         purposeTextField.resignFirstResponder()
         return true
     }
-    
     func createDatePicker() {
         datePicker.datePickerMode = .date
         dateTextField.inputView = datePicker
@@ -96,7 +93,6 @@ class DisplayOweViewController: UIViewController, UITextFieldDelegate {
         dateTextField.inputAccessoryView = toolbar
         amountOwedTextField.inputAccessoryView = toolbar
     }
-    
     @objc func doneClicked() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
@@ -105,39 +101,9 @@ class DisplayOweViewController: UIViewController, UITextFieldDelegate {
         dateTextField.text = dateFormatter.string(from: datePicker.date)
         view.endEditing(true)
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if let owe = owe {
-            dateTextField.text = owe.date
-
-            let junk = Double(owe.amount)
-            let oweAmt = String(format: "%.2f", junk!)
-            amountOwedTextField.text = "\(oweAmt)"
-            purposeTextField.text = owe.purpose
-            saveBarButton.isEnabled = true
-            segControl.selectedSegmentIndex = owe.originalSegIndex
-        } else {
-            dateTextField.text = ""
-            amountOwedTextField.text = ""
-            purposeTextField.text = ""
-        }
-        
-        // testing keyboard scrolling out
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)),
-                                               name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
-                                               name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
-    }
-    
-    // testing some stuff
     @objc func keyboardWillHide() {
         self.view.frame.origin.y = 0
     }
-    
     @objc func keyboardWillChange(notification: NSNotification) {
         
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
@@ -146,7 +112,6 @@ class DisplayOweViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -155,7 +120,41 @@ class DisplayOweViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.removeObserver(self,
                                                   name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let owe = anOweToYou {
+            dateTextField.text = owe.date
+            let junk = Double(owe.amount)
+            let oweAmt = String(format: "%.2f", junk!)
+            amountOwedTextField.text = "\(oweAmt)"
+            purposeTextField.text = owe.purpose
+            saveBarButton.isEnabled = true
+            segControl.selectedSegmentIndex = owe.originalSegIndex
+        }
+        else if let owe = yourOweToSomeone {
+            dateTextField.text = owe.date
+            let junk = Double(owe.amount)
+            let oweAmt = String(format: "%.2f", junk!)
+            amountOwedTextField.text = "\(oweAmt)"
+            purposeTextField.text = owe.purpose
+            saveBarButton.isEnabled = true
+            segControl.selectedSegmentIndex = owe.originalSegIndex
+        }
+        else {
+            dateTextField.text = ""
+            amountOwedTextField.text = ""
+            purposeTextField.text = ""
+        }
+        
+        // testing keyboard scrolling out
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)),
+                                               name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
+                                               name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+    }
     
     @IBAction func debtorChanged(_ sender: UISegmentedControl) {
         print("switched seg control to \(segControl.selectedSegmentIndex)")
@@ -168,7 +167,7 @@ class DisplayOweViewController: UIViewController, UITextFieldDelegate {
             else { return }
         
         let debtor = segControl.selectedSegmentIndex
-        
+        /*
         //you lent --> exisiting owe
         if identifier == "saveOwe" && owe != nil && debtor == 0 {
             
@@ -205,48 +204,24 @@ class DisplayOweViewController: UIViewController, UITextFieldDelegate {
 
             
         }
+        */
         // you lent --> new one
-        else if identifier == "saveOwe" && owe == nil && debtor == 0{
-            print("HOLY FUUCK")
-            let owe = OweNote()
-            print("1")
+        // THIS SHIT JUST GOT REALM-ED
+        if identifier == "saveOwe" && anOweToYou == nil && debtor == 0{
+            let owe = AnOweToYou()
             owe.originalSegIndex = 0
             owe.date = dateTextField.text ?? ""
             owe.amount = amountOwedTextField.text ?? ""
             owe.purpose = purposeTextField.text ?? ""
-            print("2")
             
-            /* post realm
-            let realm = try! Realm()
-            let thePerson = realm.objects(Profile.self)
-            try! realm.write {
-                thePerson.owesYou += Double(owe.amount)!
+            try! realm.write() {
+                profile?.owesYou += Double(owe.amount)!
             }
-            */
-            
-            // pre realm
-            profile?.owesYou += Double(owe.amount)!
-
-            print("3")
-            /* i don't know why this shit's here lmao just don't delete it i guess
-            try! self.realm.write {
-                self.realm.add(owe)
-                print("got here")
-                destination.profile?.stillOwesYouArray.append(owe)
-            }
-            */
-            print("4")
-            
-            /* commenting to see where the error is
-            try! destination.realm.write {
-                destination.realm.add(owe)
-                destination.profile?.stillOwesYouArray.append(owe)
-            }
-            */
-            // add the owe to the array
-            destination.profile?.stillOwesYouArray.append(owe)
+            RealmHelper.addAnOweToYou(owe: owe)
+            destination.profile!.stillOwesYouArray = Array(RealmHelper.retrieveAnOweToYou())
         }
-            
+        
+        /*
         // you owe --> exisiting owe
         else if identifier == "saveOwe" && owe != nil && debtor == 1 {
             
@@ -283,20 +258,19 @@ class DisplayOweViewController: UIViewController, UITextFieldDelegate {
             }
             
         }
-        else if identifier == "saveOwe" && owe == nil && debtor == 1 {
-            let owe = OweNote()
+        */
+        // you owe --> new owe
+        else if identifier == "saveOwe" && yourOweToSomeone == nil && debtor == 1 {
+            let owe = YourOweToSomeone()
             owe.originalSegIndex = 1
             owe.date = dateTextField.text ?? ""
             owe.amount = amountOwedTextField.text ?? ""
             owe.purpose = purposeTextField.text ?? ""
-            
-            // add the owe to the profile's array of owes
-            // profile?.profileOwes.append(owe)
             profile?.youOwe += Double(owe.amount)!
-            
-            // add the owe to the array
-            destination.profile?.youStillOweArray.append(owe)
-            owe.originalSegIndex = 1
+
+            RealmHelper.addToYouOweSomeone(owe: owe)
+            destination.profile!.youStillOweArray = Array(RealmHelper.retrieveYourOweToSomeone())
+
         }
         else {
             print("unexpected segue identifier hMMMMM")
