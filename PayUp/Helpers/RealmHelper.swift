@@ -11,6 +11,22 @@ import RealmSwift
 
 class RealmHelper {
     
+    static func saveProfile(profile: Profile) {
+        let realm = try! Realm()
+        try! realm.write() {
+            realm.add(profile)
+        }
+    }
+    
+    static func addOwe(owe: YourOweToSomeone, profile: Profile) {
+        let realm = try! Realm()
+        try! realm.write() {
+            profile.youOwe += Double(owe.amount)!
+            profile.youStillOweArray.append(owe)
+            realm.add(profile)
+        }
+    }
+    
     static func addToYouOweSomeone(owe: YourOweToSomeone){
         let realm = try! Realm()
         try! realm.write() {
@@ -32,13 +48,7 @@ class RealmHelper {
         }
     }
     
-    static func deleteOwe(owe: OweNote){
-        let realm = try! Realm()
-        try! realm.write() {
-            realm.delete(owe)
-        }
-    }
-    
+    /*
     static func updateOwe(oweToBeUpdated: OweNote, newOwe: OweNote) {
         let realm = try! Realm()
         try! realm.write() {
@@ -48,6 +58,7 @@ class RealmHelper {
             oweToBeUpdated.originalSegIndex = newOwe.originalSegIndex
         }
     }
+    */
     
     static func retrieveYourOweToSomeone() -> Results<YourOweToSomeone> {
         let realm = try! Realm()

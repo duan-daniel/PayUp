@@ -64,13 +64,11 @@ class AddProfileViewController: UIViewController, UITextFieldDelegate {
             profile.name = nameTextField.text ?? ""
             profile.owesYou = 0.00
             profile.youOwe = 0.00
+//            profile.stillOwesYouArray = List<AnOweToYou>()
+            // profile.youStillOweArray = List<YourOweToSomeone>()
+            // profile.clearedOweArray = List<ClearedOwe>()
             
-            profile.stillOwesYouArray = [AnOweToYou]()
-            profile.youStillOweArray = [YourOweToSomeone]()
-            profile.clearedOweArray = [ClearedOwe]()
-            // profile.stillOwesYouArray = realm.objects(AnOweToYou.self).filter(NSPredicate(value: false))
-            // profile.youStillOweArray = realm.objects(YourOweToSomeone.self).filter(NSPredicate(value: false))
-            // profile.clearedOwesArray = realm.objects(ClearedOwe.self).filter(NSPredicate(value: false))
+            //profile.clearedOweArray = [ClearedOwe]()
             
             let destination = segue.destination as! ProfilesTableViewController
             

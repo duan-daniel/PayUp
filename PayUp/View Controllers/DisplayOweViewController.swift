@@ -218,7 +218,7 @@ class DisplayOweViewController: UIViewController, UITextFieldDelegate {
                 profile?.owesYou += Double(owe.amount)!
             }
             RealmHelper.addAnOweToYou(owe: owe)
-            destination.profile!.stillOwesYouArray = Array(RealmHelper.retrieveAnOweToYou())
+            // destination.profile!.stillOwesYouArray = Array(RealmHelper.retrieveAnOweToYou())
         }
         
         /*
@@ -261,15 +261,22 @@ class DisplayOweViewController: UIViewController, UITextFieldDelegate {
         */
         // you owe --> new owe
         else if identifier == "saveOwe" && yourOweToSomeone == nil && debtor == 1 {
+            guard let profile = profile else { return }
             let owe = YourOweToSomeone()
             owe.originalSegIndex = 1
             owe.date = dateTextField.text ?? ""
             owe.amount = amountOwedTextField.text ?? ""
             owe.purpose = purposeTextField.text ?? ""
-            profile?.youOwe += Double(owe.amount)!
+            
+//            profile.youOwe += Double(owe.amount)!
+//            profile.youStillOweArray.append(owe)
+//            RealmHelper.saveProfile(profile: profile)
+            RealmHelper.addOwe(owe: owe, profile: profile)
 
-            RealmHelper.addToYouOweSomeone(owe: owe)
-            destination.profile!.youStillOweArray = Array(RealmHelper.retrieveYourOweToSomeone())
+//            RealmHelper.addToYouOweSomeone(owe: owe)
+            
+            
+            // destination.profile!.youStillOweArray = Array(RealmHelper.retrieveYourOweToSomeone())
 
         }
         else {

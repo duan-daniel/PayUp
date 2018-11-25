@@ -24,7 +24,6 @@ class ProfilesTableViewController: UITableViewController {
     }
     
     var summ: Summary?
-    
     var profile: Profile?
     
     override func viewDidLoad() {
@@ -47,7 +46,6 @@ class ProfilesTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         tableView.reloadData()
         if !tableView.visibleCells.isEmpty {
-            print("hidden set to true")
             tableView.backgroundView?.isHidden = true
         }
     }

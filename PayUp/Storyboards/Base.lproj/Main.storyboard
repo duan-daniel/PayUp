@@ -300,12 +300,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Person" id="M1Q-l4-UhT">
-                        <barButtonItem key="leftBarButtonItem" title="Profiles" id="oFG-Nz-ouk">
-                            <color key="tintColor" red="0.45490196078431372" green="0.74901960784313726" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <segue destination="vWd-tU-ihV" kind="unwind" identifier="backToListOfProfiles" unwindAction="unwindWithSegue:" id="hBU-ob-GEP"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ir6-YJ-VRo">
                             <color key="tintColor" red="0.45490196078431372" green="0.74901960784313726" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -315,7 +309,6 @@
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dE3-4H-DkS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="vWd-tU-ihV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2792.8000000000002" y="-255.02248875562222"/>
         </scene>

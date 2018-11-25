@@ -30,13 +30,17 @@ class ProfilesDetailedViewController: UITableViewController {
         }
     }
     */
+//    var stillOwesYouArray: [AnOweToYou] = []
+//    var youStillOweArray: [YourOweToSomeone] = []
+//    var clearedOwesArray: [ClearedOwe] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        profile!.stillOwesYouArray = Array(RealmHelper.retrieveAnOweToYou())
-        profile!.youStillOweArray = Array(RealmHelper.retrieveYourOweToSomeone())
-        profile!.clearedOweArray = Array(RealmHelper.retrieveClearedOwes())
         
+//        profile!.stillOwesYouArray = RealmHelper.retrieveAnOweToYou()
+//        profile!.youStillOweArray = RealmHelper.retrieveYourOweToSomeone()
+//        profile!.clearedOweArray = RealmHelper.retrieveClearedOwes()
+
         self.navigationItem.title = profile?.name
         tableView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         tableView.reloadData()
@@ -45,6 +49,10 @@ class ProfilesDetailedViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print(profile)
+//        stillOwesYouArray = Array(RealmHelper.retrieveAnOweToYou())
+//        youStillOweArray = Array(RealmHelper.retrieveYourOweToSomeone())
+//        clearedOwesArray = Array(RealmHelper.retrieveClearedOwes())
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -90,12 +98,15 @@ class ProfilesDetailedViewController: UITableViewController {
         
         if section == 0 {
             return profile!.stillOwesYouArray.count
+//            return stillOwesYouArray.count
         }
         else if section == 1 {
             return profile!.youStillOweArray.count
+//            return youStillOweArray.count
         }
         else {
             return profile!.clearedOweArray.count
+//            return clearedOwesArray.count
         }
     }
     
@@ -104,6 +115,7 @@ class ProfilesDetailedViewController: UITableViewController {
         
         if indexPath.section == 0 {
             let owe = profile!.stillOwesYouArray[indexPath.row]
+//            let owe = stillOwesYouArray[indexPath.row]
             cell.dateLabel.text = owe.date
             let junk = Double(owe.amount)
             let oweAmt = String(format: "%.2f", junk!)
@@ -113,6 +125,7 @@ class ProfilesDetailedViewController: UITableViewController {
         }
         else if indexPath.section == 1 {
             let owe = profile!.youStillOweArray[indexPath.row]
+//            let owe = youStillOweArray[indexPath.row]
             cell.dateLabel.text = owe.date
             let junk = Double(owe.amount)
             let oweAmt = String(format: "%.2f", junk!)
@@ -121,6 +134,7 @@ class ProfilesDetailedViewController: UITableViewController {
         }
         else {
             let owe = profile!.clearedOweArray[indexPath.row]
+//            let owe = clearedOwesArray[indexPath.row]
             cell.dateLabel.text = owe.date
             let junk = Double(owe.amount)
             let oweAmt = String(format: "%.2f", junk!)
