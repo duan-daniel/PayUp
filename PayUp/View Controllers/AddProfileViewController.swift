@@ -64,6 +64,12 @@ class AddProfileViewController: UIViewController, UITextFieldDelegate {
             profile.name = nameTextField.text ?? ""
             profile.owesYou = 0.00
             profile.youOwe = 0.00
+            
+            // added this
+//            profile.stillOwesYouArray = [AnOweToYou]()
+//            profile.youStillOweArray = [YourOweToSomeone]()
+//            profile.clearedOweArray = [ClearedOwe]()
+            
 //            profile.stillOwesYouArray = List<AnOweToYou>()
             // profile.youStillOweArray = List<YourOweToSomeone>()
             // profile.clearedOweArray = List<ClearedOwe>()

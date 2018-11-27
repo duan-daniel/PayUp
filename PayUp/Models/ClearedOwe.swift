@@ -14,7 +14,7 @@ class ClearedOwe: Object {
     @objc dynamic var date = ""
     @objc dynamic var purpose = ""
     @objc dynamic var amount = ""
-    @objc dynamic var originalSegIndex = 0
+    @objc dynamic var originalSegIndex = 0 // high key useless
     
 }
 

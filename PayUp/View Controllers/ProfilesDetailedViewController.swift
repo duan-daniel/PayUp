@@ -11,7 +11,7 @@ import RealmSwift
 
 class ProfilesDetailedViewController: UITableViewController {
     
-    // var realm: Realm!
+    var realm: Realm!
     var profile: Profile?
     /*
     var stillOwesYouArray: Results<AnOweToYou>! {
@@ -36,7 +36,7 @@ class ProfilesDetailedViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        realm = try! Realm()
 //        profile!.stillOwesYouArray = RealmHelper.retrieveAnOweToYou()
 //        profile!.youStillOweArray = RealmHelper.retrieveYourOweToSomeone()
 //        profile!.clearedOweArray = RealmHelper.retrieveClearedOwes()
@@ -49,7 +49,7 @@ class ProfilesDetailedViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print(profile)
+        // print(profile)
 //        stillOwesYouArray = Array(RealmHelper.retrieveAnOweToYou())
 //        youStillOweArray = Array(RealmHelper.retrieveYourOweToSomeone())
 //        clearedOwesArray = Array(RealmHelper.retrieveClearedOwes())
@@ -150,30 +150,46 @@ class ProfilesDetailedViewController: UITableViewController {
         return true
     }
     
-    /* remove thing
+    // remove thing
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         var removeButton = UITableViewRowAction()
+        // var clearButton = UITableViewRowAction()
         
         if (indexPath.section == 0 || indexPath.section == 1) {
+            print ("removing stuff")
             let clearButton = UITableViewRowAction(style: .normal, title: "CLEAR") { (rowAction, indexPath) in
                 if indexPath.section == 0 {
                     let owe = self.profile?.stillOwesYouArray[indexPath.row]
                     guard let debtStr = owe?.amount as? String else { return }
                     let debt = Double(debtStr)
-                    self.profile?.owesYou -= debt!
-                    
-                    // reorder the row to put it to the bottom
-                    self.profile?.stillOwesYouArray.remove(at: indexPath.row)
-                    self.profile?.clearedOwes.append(owe!)
+                    try! self.realm.write() {
+                        self.profile?.owesYou -= debt!
+                        let newOwe = ClearedOwe()
+                        newOwe.date = (owe?.date)!
+                        newOwe.purpose = (owe?.purpose)!
+                        newOwe.amount = (owe?.amount)!
+                        // high key useless
+                        newOwe.originalSegIndex = (owe?.originalSegIndex)!
+                        // reorder the row to put it to the bottom
+                        self.profile?.stillOwesYouArray.remove(at: indexPath.row)
+                        self.profile?.clearedOweArray.append(newOwe)
+                    }
                 }
                 else if indexPath.section == 1 {
                     let owe = self.profile?.youStillOweArray[indexPath.row]
                     guard let debtStr = owe?.amount as? String else { return }
                     let debt = Double(debtStr)
-                    self.profile?.youOwe -= debt!
-                    
-                    self.profile?.youStillOweArray.remove(at: indexPath.row)
-                    self.profile?.clearedOwes.append(owe!)
+                    try! self.realm.write() {
+                        self.profile?.youOwe -= debt!
+                        let newOwe = ClearedOwe()
+                        newOwe.date = (owe?.date)!
+                        newOwe.purpose = (owe?.purpose)!
+                        newOwe.amount = (owe?.amount)!
+                        // high key useless
+                        newOwe.originalSegIndex = (owe?.originalSegIndex)!
+                        self.profile?.youStillOweArray.remove(at: indexPath.row)
+                        self.profile?.clearedOweArray.append(newOwe)
+                    }
                 }
                 tableView.reloadData()
             }
@@ -182,14 +198,16 @@ class ProfilesDetailedViewController: UITableViewController {
         }
         else {
             removeButton = UITableViewRowAction(style: .normal, title: "Remove") { (rowAction, indexPath) in
-                self.profile?.clearedOwes.remove(at: indexPath.row)
+                try! self.realm.write() {
+                    self.profile?.clearedOweArray.remove(at: indexPath.row)
+                }
                 tableView.reloadData()
             }
             removeButton.backgroundColor = UIColor.red
         }
         return[removeButton]
     }
-    */
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else { return }

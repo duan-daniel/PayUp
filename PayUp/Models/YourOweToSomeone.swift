@@ -14,7 +14,7 @@ class YourOweToSomeone: Object {
     @objc dynamic var date = ""
     @objc dynamic var purpose = ""
     @objc dynamic var amount = ""
-    @objc dynamic var originalSegIndex = 0
+    @objc dynamic var originalSegIndex = 1
     
 }
 

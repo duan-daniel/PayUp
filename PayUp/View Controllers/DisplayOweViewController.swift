@@ -33,8 +33,8 @@ class DisplayOweViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("WTFF")
         realm = try! Realm()
+        
         createDatePicker()
         setUpViews()
         purposeTextField.delegate = self
@@ -153,7 +153,6 @@ class DisplayOweViewController: UIViewController, UITextFieldDelegate {
                                                name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
                                                name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
     }
     
     @IBAction func debtorChanged(_ sender: UISegmentedControl) {
@@ -161,126 +160,132 @@ class DisplayOweViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("UNFF")
         guard let identifier = segue.identifier,
             let destination = segue.destination as? ProfilesDetailedViewController
             else { return }
         
         let debtor = segControl.selectedSegmentIndex
-        /*
-        //you lent --> exisiting owe
-        if identifier == "saveOwe" && owe != nil && debtor == 0 {
-            
-            guard let debtStr = owe?.amount as? String else { return }
-            let debt = Double(debtStr)
-            
-            if segControl.selectedSegmentIndex == owe?.originalSegIndex {
-                profile?.owesYou -= debt!
-                
-                owe?.date = dateTextField.text ?? ""
-                owe?.amount = amountOwedTextField.text ?? ""
-                owe?.purpose = purposeTextField.text ?? ""
-                
-                let debtString: String = (owe?.amount)!
-                let newDebt: Double = Double(debtString)!
-                profile?.owesYou += newDebt
-            }
-            else {
-                profile?.youOwe -= debt!
-                destination.profile?.youStillOweArray = (destination.profile?.youStillOweArray.filter { $0 !== owe})!
-                
-                
-                let revisedOwe = OweNote()
-                revisedOwe.originalSegIndex = 0
-                revisedOwe.date = dateTextField.text ?? ""
-                revisedOwe.amount = amountOwedTextField.text ?? ""
-                revisedOwe.purpose = purposeTextField.text ?? ""
-                
-                profile?.owesYou += Double(revisedOwe.amount)!
-                
-                // add the owe to the array
-                destination.profile?.stillOwesYouArray.append(revisedOwe)
-            }
-
-            
-        }
-        */
-        // you lent --> new one
-        // THIS SHIT JUST GOT REALM-ED
-        if identifier == "saveOwe" && anOweToYou == nil && debtor == 0{
-            let owe = AnOweToYou()
-            owe.originalSegIndex = 0
-            owe.date = dateTextField.text ?? ""
-            owe.amount = amountOwedTextField.text ?? ""
-            owe.purpose = purposeTextField.text ?? ""
-            
-            try! realm.write() {
-                profile?.owesYou += Double(owe.amount)!
-            }
-            RealmHelper.addAnOweToYou(owe: owe)
-            // destination.profile!.stillOwesYouArray = Array(RealmHelper.retrieveAnOweToYou())
-        }
+        print("debtor: \(debtor)")
         
-        /*
-        // you owe --> exisiting owe
-        else if identifier == "saveOwe" && owe != nil && debtor == 1 {
-            
-            guard let debtStr = owe?.amount as? String else { return }
+        // you lent --> exisiting owe
+        if identifier == "saveOwe" && anOweToYou != nil && debtor == 0 {
+            print("changing an existing youLent owe")
+            guard let profile = profile else { return }
+            guard let debtStr = anOweToYou?.amount as? String else { return }
             let debt = Double(debtStr)
             
-            if segControl.selectedSegmentIndex == owe?.originalSegIndex {
-                profile?.youOwe -= debt!
+            print("selectedSegment Index: \(segControl.selectedSegmentIndex)")
+            if debtor == anOweToYou?.originalSegIndex { // sticking with You Lent
+                try! realm.write() {
+                    profile.owesYou -= debt!
+                    anOweToYou?.date = dateTextField.text ?? ""
+                    anOweToYou?.amount = amountOwedTextField.text ?? ""
+                    anOweToYou?.purpose = purposeTextField.text ?? ""
+                }
                 
-                owe?.date = dateTextField.text ?? ""
-                owe?.amount = amountOwedTextField.text ?? ""
-                owe?.purpose = purposeTextField.text ?? ""
-                
-                let debtString: String = (owe?.amount)!
+                let debtString: String = (anOweToYou?.amount)!
                 let newDebt: Double = Double(debtString)!
-                profile?.youOwe += newDebt
+                
+                try! realm.write() {
+                    profile.owesYou += newDebt
+                }
             }
-            else {
-                profile?.owesYou -= debt!
-                destination.profile?.stillOwesYouArray = (destination.profile?.stillOwesYouArray.filter { $0 !== owe})!
-                
-                
-                let revisedOwe = OweNote()
+            else {  // changed to You Owe
+                print ("doing this shit")
+                let indexOfOwe = profile.stillOwesYouArray.index(of: anOweToYou!)
+                try! realm.write() {
+                    profile.owesYou -= debt!
+                    profile.stillOwesYouArray.remove(at: indexOfOwe!)
+                }
+        
+                let revisedOwe = YourOweToSomeone()
                 revisedOwe.originalSegIndex = 1
                 revisedOwe.date = dateTextField.text ?? ""
                 revisedOwe.amount = amountOwedTextField.text ?? ""
                 revisedOwe.purpose = purposeTextField.text ?? ""
                 
-                profile?.youOwe += Double(revisedOwe.amount)!
                 
                 // add the owe to the array
-                destination.profile?.youStillOweArray.append(revisedOwe)
-
+//                destination.profile?.stillOwesYouArray.append(revisedOwe)
+                RealmHelper.addToYouOweSomeone(owe: revisedOwe, profile: profile)
             }
             
         }
-        */
+        
+        // you lent --> new one
+        // THIS SHIT JUST GOT REALM-ED
+        else if identifier == "saveOwe" && anOweToYou == nil && debtor == 0 {
+            guard let profile = profile else { return }
+            let owe = AnOweToYou()
+            owe.originalSegIndex = 0
+            owe.date = dateTextField.text ?? ""
+            owe.amount = amountOwedTextField.text ?? ""
+            owe.purpose = purposeTextField.text ?? ""
+            RealmHelper.addAnOweToYou(owe: owe, profile: profile)
+        }
+        
+        // you owe --> existing owe
+        else if identifier == "saveOwe" && yourOweToSomeone != nil && debtor == 1 {
+            print ("changing an existing You Still Owe")
+            guard let profile = profile else { return }
+            guard let debtStr = yourOweToSomeone?.amount as? String else { return }
+            let debt = Double(debtStr)
+            
+            print("selectedSegment Index: \(segControl.selectedSegmentIndex)")
+            if debtor == yourOweToSomeone?.originalSegIndex { // sticking with you owe
+                try! realm.write() {
+                    profile.youOwe -= debt!
+                    yourOweToSomeone?.date = dateTextField.text ?? ""
+                    yourOweToSomeone?.amount = amountOwedTextField.text ?? ""
+                    yourOweToSomeone?.purpose = purposeTextField.text ?? ""
+                }
+                
+                let debtString: String = (yourOweToSomeone?.amount)!
+                let newDebt: Double = Double(debtString)!
+                
+                try! realm.write() {
+                    profile.youOwe += newDebt
+                }
+            }
+            else { //changed to You Lent
+                print("this should be printing")
+                let indexOfOwe = profile.youStillOweArray.index(of: yourOweToSomeone!)
+                try! realm.write() {
+                    profile.youOwe -= debt!
+                    profile.youStillOweArray.remove(at: indexOfOwe!)
+                }
+                
+                
+                let revisedOwe = AnOweToYou()
+                revisedOwe.originalSegIndex = 0
+                revisedOwe.date = dateTextField.text ?? ""
+                revisedOwe.amount = amountOwedTextField.text ?? ""
+                revisedOwe.purpose = purposeTextField.text ?? ""
+                
+
+                // add the owe to the array
+                // destination.profile?.youStillOweArray.append(revisedOwe)
+                RealmHelper.addAnOweToYou(owe: revisedOwe, profile: profile)
+                
+            }
+            
+        }
+        
         // you owe --> new owe
         else if identifier == "saveOwe" && yourOweToSomeone == nil && debtor == 1 {
             guard let profile = profile else { return }
+            print("creating a brand new you owe")
             let owe = YourOweToSomeone()
             owe.originalSegIndex = 1
             owe.date = dateTextField.text ?? ""
             owe.amount = amountOwedTextField.text ?? ""
             owe.purpose = purposeTextField.text ?? ""
-            
-//            profile.youOwe += Double(owe.amount)!
-//            profile.youStillOweArray.append(owe)
-//            RealmHelper.saveProfile(profile: profile)
-            RealmHelper.addOwe(owe: owe, profile: profile)
 
-//            RealmHelper.addToYouOweSomeone(owe: owe)
-            
-            
-            // destination.profile!.youStillOweArray = Array(RealmHelper.retrieveYourOweToSomeone())
+            RealmHelper.addToYouOweSomeone(owe: owe, profile: profile)
 
         }
         else {
-            print("unexpected segue identifier hMMMMM")
+            print("this should not print")
         }
         
         destination.tableView.reloadData()

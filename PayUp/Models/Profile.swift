@@ -14,6 +14,11 @@ class Profile: Object {
     @objc dynamic var name = ""
     @objc dynamic var owesYou = 0.00
     @objc dynamic var youOwe = 0.00
+    
+    // changed this
+//    var stillOwesYouArray: [AnOweToYou] = []
+//    var youStillOweArray: [YourOweToSomeone] = []
+//    var clearedOweArray: [ClearedOwe] = []
 
     let stillOwesYouArray = List<AnOweToYou>()
     let youStillOweArray = List<YourOweToSomeone>()

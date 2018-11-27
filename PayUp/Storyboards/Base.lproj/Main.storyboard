@@ -182,7 +182,14 @@
         <scene sceneID="Gz0-vu-2OO">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8rN-Tw-AOP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profiles" id="yyX-9W-5h2"/>
+                    <tabBarItem key="tabBarItem" title="Profiles" image="group_people" selectedImage="group_people" id="yyX-9W-5h2">
+                        <color key="badgeColor" red="0.4549019608" green="0.74901960779999999" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.4549019608" green="0.74901960779999999" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zzb-r2-VzF">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -479,6 +486,7 @@
     </scenes>
     <resources>
         <image name="add_profile" width="40" height="40"/>
+        <image name="group_people" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="IWW-W8-ZRP"/>
