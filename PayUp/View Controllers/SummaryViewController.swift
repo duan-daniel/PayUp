@@ -17,7 +17,7 @@ class SummaryViewController: UIViewController {
     func lol() {
         // let table:  = ProfilesTableViewController
         
- 
+        // refactor
         
     }
     
